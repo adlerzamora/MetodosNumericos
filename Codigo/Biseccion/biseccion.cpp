@@ -14,7 +14,7 @@ void bisection(float *x, float a, float b, int *itr)
 {
 	*x = (a + b) / 2;
 	++(*itr);
-	cout << "Iteration no. "<< itr << " X = "<< x <<endl;
+	cout << "Iteracion no. "<< itr << " X = "<< x <<endl;
 }
 int main()
 {
