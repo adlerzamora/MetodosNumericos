@@ -1,7 +1,6 @@
-// biseccion.cpp: define el punto de entrada de la aplicación de consola.
-//
-
-#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+#include <conio.h>
 
 using namespace std;
 
@@ -15,14 +14,20 @@ void bisection(float *x, float a, float b, int *itr)
 {
 	*x = (a + b) / 2;
 	++(*itr);
-	printf("Iteration no. %3d X = %7.5f\n", *itr, *x);
+	cout << "Iteration no. "<< itr << " X = "<< x <<endl;
 }
 int main()
 {
 	int itr = 0, maxmitr;
 	float x, a, b, allerr, x1;
-	printf("\nEnter the values of a, b, allowed error and maximum iterations:\n");
-	scanf("%f %f %f %d", &a, &b, &allerr, &maxmitr);
+	cout << "Ingresa el valor de a: ";
+	cin >> a;
+	cout << "\nIngresa el valor de b: ";
+	cin >> b;
+	cout << "\nIngresa el valor del error permitido: ";
+	cin >> allerr;
+	cout << "\nIngresa el valor de las iteraciones maximas: ";
+	cin >> maxmitr;
 	bisection(&x, a, b, &itr);
 	do
 	{
@@ -33,13 +38,13 @@ int main()
 		bisection(&x1, a, b, &itr);
 		if (fabs(x1 - x) < allerr)
 		{
-			cout << "After " << itr <<  " iterations, root = " << x1;
+			cout << "Despues de " << itr <<  " iteraciones, la raiz es = " << x1<<endl;
 			return 0;
 		}
 		x = x1;
 	} while (itr < maxmitr);
 	
-	cout << "The solution does not converge or iterations are not sufficient";
+	cout << "La solucion no converge o no fueron suficientes iteraciones.";
 	_getch();
 	return 0;
 }
